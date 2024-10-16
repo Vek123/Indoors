@@ -1,0 +1,13 @@
+<mat-card class="cat-card">
+  <mat-card-header style="justify-content: center"><strong>{{ cat.name }}</strong></mat-card-header>
+  <br/>
+  <mat-card-content>
+    <p>Возраст: {{ cat.age }} {{getAgeSuffix(cat.age)}}</p>
+    <p>Порода: {{ cat.breed }}</p>
+    <p>Пушистость: {{ cat.skin }}</p>
+    <div class="cat-card__actions">
+      <button class="cat-card__button-delete" mat-button (click)="onDelete(cat)">Удалить</button>
+      <button class="cat-card__button-change" mat-button (click)="onChange(cat)">Изменить</button>
+    </div>
+  </mat-card-content>
+</mat-card>

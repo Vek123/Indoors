@@ -1,0 +1,23 @@
+<nav class="nav">
+  <div class="template-container">
+    <ul>
+      <li *ngFor="let item of menu.menu; let i = index"
+          class = "nav__item"
+          [class.nav__item--active]="i === menu.active_id">
+        <a [routerLink]="item.link">
+          {{ item.name }}
+        </a>
+      </li>
+      @if (user) {
+        <li class="nav__item nav__item--right nav__item--user">{{user.first_name}}</li>
+        <li class="nav__item">
+          <a routerLink="/logout">Выйти</a>
+        </li>
+      } @else {
+        <li class="nav__item nav__item--right">
+          <a routerLink="/login">Войти</a>
+        </li>
+      }
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,12 @@
+.shop {
+  &__catalog {
+    display: flex;
+    gap: 15px;
+  }
+  &__cat {
+    width: 250px;
+  }
+  &__button-open-add-form {
+    margin-bottom: 20px;
+  }
+}

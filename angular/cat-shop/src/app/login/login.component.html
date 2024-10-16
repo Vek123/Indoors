@@ -1,0 +1,38 @@
+<app-header [menu]="nav_menu"></app-header>
+<div class="template-container">
+  <div class="login-form">
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h4 class="form__title">Войти</h4>
+      <mat-form-field class="form__field">
+        <mat-label>
+          Логин:
+        </mat-label>
+        <input matInput type="text" formControlName="username">
+      </mat-form-field>
+      <mat-form-field class="form__field">
+        <mat-label>
+          Пароль:
+        </mat-label>
+        <input matInput type="password" formControlName="password"/>
+      </mat-form-field>
+      <button mat-fab extended type="submit" [disabled]="loginForm.status !== 'VALID'">Войти</button>
+      @if (login_errors) {
+        <ul class="form__errors-list">
+          @for (error of Object.values(login_errors); track error) {
+            @if (Array.isArray(error)) {
+              @for (inner_error of error; track inner_error.id) {
+                <li class="form__error">{{inner_error}}</li>
+              }
+            }
+            @else {
+              <li class="form__error">{{error}}</li>
+            }
+          }
+        </ul>
+      }
+      <div>
+        <a class="form__link text-decoration" routerLink="/register">Нет аккаунта? Зарегистрироваться</a>
+      </div>
+    </form>
+  </div>
+</div>

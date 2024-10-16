@@ -1,0 +1,13 @@
+<app-header [menu]="nav_menu"></app-header>
+<div class="template-container">
+  <div class="shop" *ngIf="userService.user.getValue()">
+    <button class="shop__button-open-add-form" mat-raised-button (click)="openAddCatForm()">Добавить кота</button>
+    <div class="shop__catalog">
+      @for (cat of cats$ | async; track cat.id) {
+        <div class="shop__cat">
+          <app-cat [cat]="cat"></app-cat>
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<app-header [menu]="nav_menu"></app-header>
+<div class="template-container">
+  <div class="messenger" *ngIf="userService.user.getValue()">
+    <button mat-raised-button (click)="onAddDialog()">Создать диалог</button>
+    <div class="messenger__content">
+      <ul class="messenger__dialogs">
+        @for (dialog of dialogs$ | async; track dialog.id) {
+          <li>
+            <app-dialog [dialog]="dialog" [onChangeDialog]="wrapperOnChangeDialog"></app-dialog>
+          </li>
+        }
+      </ul>
+      <div class="messenger__dialog" [class.messenger__dialog--unselected]="current_dialog_id === undefined">
+        <div class="messenger__unselected-text">Выберите диалог...</div>
+        <ul class="messenger__messages">
+          @for (message of messages$ | async; track message.id) {
+            <li class="messenger__message" [class.messenger__message--author]="message.author.id === userService.user.value?.id">
+              <div class="message">
+                <div class="message__content">
+                  {{message.content}}
+                </div>
+                <div class="message__author">
+                  @if (message.author.id !== userService.user.value?.id) {
+                    Автор: {{message.author.first_name || "Без имени"}}
+                  }
+                </div>
+              </div>
+            </li>
+          }
+        </ul>
+        <form class="messenger__input-form" (submit)="onSubmitMessage($event)">
+          <div class="messenger__input">
+            <input type="text" placeholder="Введите сообщение..." (input)="onInputMessage($event)"/>
+            <button class="messenger__send-button" type="submit" [disabled]="written_message === ''">
+              <img ngSrc="/icons/send-icon.svg" priority alt="Icon" height="50" width="50">
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

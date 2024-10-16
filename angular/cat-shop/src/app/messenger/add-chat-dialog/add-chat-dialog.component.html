@@ -1,0 +1,22 @@
+<div class="add-chat-dialog">
+  <form class="form" (ngSubmit)="onSubmit()" [formGroup]="dialogForm">
+    <h4 class="form__title">Создать диалог</h4>
+    <div class="search">
+      <mat-form-field class="search__input form__field">
+        <mat-label>Заводчик:</mat-label>
+        <input matInput type="text" formControlName="receiver" placeholder="Начните вводить псевдоним...">
+      </mat-form-field>
+      @if (receivers.length > 0) {
+        <div class="search__dropdown">
+          <div>Выберите заводчика из списка:</div>
+          <ul>
+            @for (receiver of receivers; track receiver.id) {
+              <li style="text-decoration: underline; cursor: pointer;" (click)="selectReceiver(receiver)">{{receiver.first_name}}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+    <button mat-button type="submit" [disabled]="selectedReceiver === null" mat-dialog-close>Создать</button>
+  </form>
+</div>

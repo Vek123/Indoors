@@ -1,0 +1,34 @@
+.nav {
+  width: 100vw;
+  background-color: sandybrown;
+  margin-bottom: 50px;
+  ul {
+    display: flex;
+  }
+  &__item {
+    color: white;
+    transition: background-color .3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover, &--active {
+      background-color: rgba(brown, .4);
+    }
+    &--right {
+      margin-left: auto;
+    }
+    &--user {
+      padding: 0 20px;
+      &:hover {
+        background-color: unset;
+      }
+    }
+    a {
+      height: 60px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

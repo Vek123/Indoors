@@ -1,0 +1,54 @@
+<app-header [menu]="nav_menu"></app-header>
+<div class="template-container">
+  <div class="register">
+    <div class="register__form">
+      <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <h4 class="form__title">Зарегистрироваться</h4>
+        <mat-form-field class="form__field">
+          <mat-label>
+            Имя пользователя:
+          </mat-label>
+          <input matInput type="text" formControlName="username">
+        </mat-form-field>
+        <mat-form-field class="form__field">
+          <mat-label>
+            Псевдоним:
+          </mat-label>
+          <input matInput type="text" formControlName="first_name">
+        </mat-form-field>
+        <div class="form__inner-group" formGroupName="passwords">
+          <mat-form-field class="form__field">
+            <mat-label>
+              Пароль:
+            </mat-label>
+            <input matInput type="password" formControlName="password"/>
+          </mat-form-field>
+          <mat-form-field class="form__field">
+            <mat-label>
+              Повторите пароль:
+            </mat-label>
+            <input matInput type="password" formControlName="re_password"/>
+          </mat-form-field>
+        </div>
+        <button mat-fab extended type="submit" [disabled]="registerForm.status !== 'VALID'">Зарегистрироваться</button>
+        @if (register_errors) {
+          <ul class="form__errors-list">
+            @for (error of Object.values(register_errors); track error) {
+              @if (error.length) {
+                @for (inner_error of error; track inner_error.id) {
+                  <li class="form__error">{{inner_error}}</li>
+                }
+              }
+              @else {
+                <li class="form__error">{{error}}</li>
+              }
+            }
+          </ul>
+        }
+        <div>
+          <a class="form__link text-decoration" routerLink="/login">Авторизироваться</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+.add-chat-dialog {
+  min-width: 400px;
+  button[type="submit"] {
+    margin-top: 15px;
+  }
+}
+.search {
+  display: flex;
+  flex-direction: column;
+  &__dropdown {
+    background-color: rgba(sandybrown, .6);
+    border-radius: 15px;
+    padding: 20px;
+  }
+}

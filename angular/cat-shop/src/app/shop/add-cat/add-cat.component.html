@@ -1,0 +1,33 @@
+<div class="add-cat-form">
+  <h6 class="add-cat-form__title">{{dialogData.title}}</h6>
+  <form class="add-cat-form__form" [formGroup]="catForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="add-cat-form__field">
+      <mat-label>
+        Имя:
+      </mat-label>
+      <input matInput type="text" formControlName="name">
+    </mat-form-field>
+    <mat-form-field class="add-cat-form__field">
+      <mat-label>
+        Возраст:
+      </mat-label>
+      <input matInput type="text" formControlName="age">
+    </mat-form-field>
+    <mat-form-field class="add-cat-form__field">
+      <mat-label>
+        Порода:
+      </mat-label>
+      <input matInput type="text" formControlName="breed">
+    </mat-form-field>
+    <mat-form-field class="add-cat-form__field">
+      <mat-label>
+        Пушистость:
+      </mat-label>
+      <input matInput type="text" formControlName="skin">
+    </mat-form-field>
+    <div class="add-cat-form__actions">
+      <button mat-button type="submit" [disabled]="catForm.status !== 'VALID'" mat-dialog-close>{{dialogData.submit_text}}</button>
+      <button mat-button (click)="closeCatForm()">Отменить</button>
+    </div>
+  </form>
+</div>

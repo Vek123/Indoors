@@ -1,0 +1,11 @@
+.cat-card {
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__button {
+    &-delete {
+      color: red;
+    }
+  }
+}

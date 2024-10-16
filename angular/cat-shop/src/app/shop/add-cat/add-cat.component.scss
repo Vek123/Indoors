@@ -1,0 +1,18 @@
+.add-cat-form {
+  padding: 40px;
+  min-width: 400px;
+  &__title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  &__form {
+  }
+  &__field {
+    display: flex;
+    justify-content: center;
+  }
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}

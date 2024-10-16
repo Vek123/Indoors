@@ -1,0 +1,8 @@
+<div class="dialog">
+  <input class="dialog__input" type="radio" name="dialog" [id]="dialog.id" (change)="onChangeDialog(dialog.id)"/>
+  <label class="dialog__label" [for]="dialog.id">
+    @for (member of dialog.members; track member.id) {
+      {{member.first_name}}
+    }
+  </label>
+</div>
